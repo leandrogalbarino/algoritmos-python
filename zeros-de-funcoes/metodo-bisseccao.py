@@ -79,15 +79,15 @@ plt.show()
 print()
 # Exibir tabela de iterações
 print("\tMÉTODO DA BISSECÇÃO | DETERMINAÇÃO DA RAIZ z1")
-print(f"{'     '}{'nk':<6}{'ak':>16}{'xk':>16}{'bk':>16}{'f(ak)':>16}{'f(xk)':>16}{'f(bk)':>16}{'ERk':>16}")
+print(f"{'     '}{'nk':<6}{'ak':>20}{'xk':>20}{'bk':>20}{'f(ak)':>20}{'f(xk)':>20}{'f(bk)':>20}{'ERk':>20}")
 for i, (a, x, b, fa, fx, fb, er) in enumerate(interacoes):
     if isinstance(er, str):
-        print(f"{'     '}{i:<6}{a:>16.10f}{x:>16.10f}{b:>16.10f}{fa:>16.10f}{fx:>16.10f}{fb:>16.10f}{er:>16}")
+        print(f"{'     '}{i:<6}{a:>20.9e}{x:>20.9e}{b:>20.9e}{fa:>20.9e}{fx:>20.9e}{fb:>20.9e}{er:>20}")
     else:
-        print(f"{'     '}{i:<6}{a:>16.10f}{x:>16.10f}{b:>16.10f}{fa:>16.10f}{fx:>16.10f}{fb:>16.10f}{er:>16.10f}")
+        print(f"{'     '}{i:<6}{a:>20.9e}{x:>20.9e}{b:>20.9e}{fa:>20.9e}{fx:>20.9e}{fb:>20.9e}{er:>20.9e}")
 
 # Exibir o valor final da raiz
 if raiz is not None:
-    print(f"{'     '}Raiz z1 = {raiz:>16.10f}")
+    print(f"{'     '}Raiz z1 = {raiz:>20.9e}")
 
 input()

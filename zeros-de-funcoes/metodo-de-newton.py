@@ -84,14 +84,14 @@ if len(interacoes) > 0:
     # Exibir tabela de interações
     print("\tMÉTODO DE NEWTON | DETERMINAÇÃO DA RAIZ z2")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'xk':>16}{'f(xk)':>16}{'f\'(xk)':>16}{'ERk':>16}")
+    print(f"{'     '}{'k':<6}{'xk':>20}{'f(xk)':>20}{'f\'(xk)':>20}{'ERk':>20}")
     for i, (x, fx, f_linha, er) in enumerate(interacoes):
         if isinstance(er, str):
-            print(f"{'     '}{i:<6}{x:>16.10f}{fx:>16.10f}{f_linha:>16.10}{er:>16}")  # Exibe a string sem formatação
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{er:>20}")  # Exibe a string sem formatação
         else:    
-            print(f"{'     '}{i:<6}{x:>16.10f}{fx:>16.10f}{f_linha:>16.10}{er:>16.10f}")
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{er:>20.9e}")
 # Exibir o valor final da raiz
 if raiz is not None:
-    print(f"{'     '}Raiz z2 = {raiz:>16.10f}")
+    print(f"{'     '}Raiz z2 = {raiz:>20.9e}")
 
 input()

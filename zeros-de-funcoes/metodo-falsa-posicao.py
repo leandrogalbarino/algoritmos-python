@@ -81,12 +81,12 @@ print()
 # Exibir tabela de interações
 print("\tMÉTODO DA FALSA POSIÇÃO | DETERMINAÇÃO DA RAIZ z4")
 # Cabeçalho da tabela
-print(f"{'     '}{'k':<6}{'ak':>16}{'xk':>16}{'bk':>16}{'f(xk)':>16}{'ERk':>16}")
+print(f"{'     '}{'k':<6}{'ak':>20}{'xk':>20}{'bk':>20}{'f(xk)':>20}{'ERk':>20}")
 for i, (a, x, b, fx, er) in enumerate(interacoes):
     if isinstance(er, str):
-        print(f"{'     '}{i:<6}{a:>16.10f}{x:>16.10f}{b:>16.10f}{fx:>16.10f}{er:>16}")
+        print(f"{'     '}{i:<6}{a:>20.9e}{x:>20.9e}{b:>20.9e}{fx:>20.9e}{er:>20}")
     else:
-        print(f"{'     '}{i:<6}{a:>16.10f}{x:>16.10f}{b:>16.10f}{fx:>16.10f}{er:>16.10f}")
+        print(f"{'     '}{i:<6}{a:>20.9e}{x:>20.9e}{b:>20.9e}{fx:>20.9e}{er:>20.9e}")
 if raiz is not None:
-    print(f"{'     '}Raiz z4 = {raiz:>16.10f}")
+    print(f"{'     '}Raiz z4 = {raiz:>20.9e}")
 input()
