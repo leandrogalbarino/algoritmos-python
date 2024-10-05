@@ -6,13 +6,16 @@ coeficientes = [1, -12.0953, 33.6161, 55.4476, -260.915, 119.827]
 
 #coeficientes = [1, 28.3001, 308.576, 1614.77, 4044.8, 3880.73]
 
+#coeficientes = [1, -20.0253, 156.407, -595.207, 1103.49, -797.472]
+
 
 def f_string():
     return "x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827"
-       
+    #return "x** 5 - 20.0253*x** 4 + 156.407*x** 3 - 595.207*x** 2 + 1103.49*x - 797.472"
 
 def f(x):
     return x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827
+    #return x** 5 - 20.0253*x** 4 + 156.407*x** 3 - 595.207*x** 2 + 1103.49*x -797.472  
 
 def f_linha(x):
     return 5*x**4 - 4*12.0953*x**3 + 3*33.6161*x**2 + 2*55.4476*x - 260.915
@@ -78,12 +81,13 @@ def metodo_de_horner():
         x = x_anterior - p_xn / pn_linha_xn
         erro = tolerancia(x, x_anterior)  # Calcula a tolerância
 
-        if erro < e():
-            return x, estimativas, coeficientes_P, coeficientes_P_linha
-        
         coeficientes_P.append(coeficientes_P_atual)
         coeficientes_P_linha.append(coeficientes_P_linha_atual)
         estimativas.append((x, f(x), f_linha(x), erro))
+
+        if erro < e():
+            return x, estimativas, coeficientes_P, coeficientes_P_linha
+        
 
         if (len(estimativas) > 100):
             print("Metodo de Horner nao convergiu.")
@@ -121,9 +125,9 @@ print("\tMÉTODO DE HORNER | DETERMINAÇÃO DA RAÍZ z5")
 if len(coeficientes_P):
     print("\tCoeficientes bi do Polinômio f(x)")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'b5k':>16}{'b4k':>16}{'b3k':>16}{'b2k':>16}{'b1k':>16}{'b0k':>16}")
+    print(f"{'     '}{'k':<6}{'b5k':>20}{'b4k':>20}{'b3k':>20}{'b2k':>20}{'b1k':>20}{'b0k':>20}")
     for i, (b5, b4, b3, b2, b1, b0) in enumerate(coeficientes_P):
-        print(f"{'     '}{i:<6}{b5:>16.10f}{b4:>16.10f}{b3:>16.10}{b2:>16.10f}{b1:>16.10f}{b0:>16.10f}")
+        print(f"{'     '}{i:<6}{b5:>20.9e}{b4:>20.9e}{b3:>20.9e}{b2:>20.9e}{b1:>20.9e}{b0:>20.9e}")
 
 print()
 
@@ -133,9 +137,9 @@ print()
 if len(coeficientes_P):
     print("\tCoeficientes ci do Polinômio f(x)")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'c5k':>16}{'c4k':>16}{'c3k':>16}{'c2k':>16}{'c1k':>16}")
+    print(f"{'     '}{'k':<6}{'c5k':>20}{'c4k':>20}{'c3k':>20}{'c2k':>20}{'c1k':>20}")
     for i, (c5, c4, c3, c2, c1) in enumerate(coeficientes_P_linha):
-        print(f"{'     '}{i:<6}{c5:>16.10f}{c4:>16.10f}{c3:>16.10}{c2:>16.10f}{c1:>16.10f}")
+        print(f"{'     '}{i:<6}{c5:>20.9e}{c4:>20.9e}{c3:>20.9e}{c2:>20.9e}{c1:>20.9e}")
 
 print()
 
@@ -144,17 +148,17 @@ if len(estimativas) > 0:
     # Exibir tabela de interações
     print("\tEstimativas")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'xk':>16}{
-          'f(xk)':>16}{'f\'(xk)':>16}{'ERk':>16}")
+    print(f"{'     '}{'k':<6}{'xk':>20}{
+          'f(xk)':>20}{'f\'(xk)':>20}{'ERk':>20}")
     for i, (x, fx, f_linha, er) in enumerate(estimativas):
         if isinstance(er, str):
-            print(f"{'     '}{i:<6}{x:>16.10f}{fx:>16.10f}{f_linha:>16.10}{
-                  er:>16}")  # Exibe a string sem formatação
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{
+                  er:>20}")  # Exibe a string sem formatação
         else:
-            print(f"{'     '}{i:<6}{x:>16.10f}{
-                  fx:>16.10f}{f_linha:>16.10}{er:>16.10f}")
+            print(f"{'     '}{i:<6}{x:>20.9e}{
+                  fx:>20.9e}{f_linha:>20.9e}{er:>20.9e}")
 # Exibir o valor final da raiz
 if raiz is not None:
-    print(f"{'     '}Raiz z5 = {raiz:>16.10f}")
+    print(f"{'     '}Raiz z5 = {raiz:>20.9e}")
 
 input()

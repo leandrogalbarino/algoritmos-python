@@ -106,13 +106,13 @@ if len(interacoes) > 0:
     # Exibir tabela de interações
     print("\tMÉTODO DA SECANTE | DETERMINAÇÃO DA RAIZ z3")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'xk':>16}{'f(xk)':>16}{'ERk':>16}")
+    print(f"{'     '}{'k':<6}{'xk':>20}{'f(xk)':>20}{'ERk':>20}")
     for i, (x, fx, er) in enumerate(interacoes):
         if isinstance(er, str):
             # Exibe a string sem formatação
-            print(f"{'     '}{i:<6}{x:>16.10f}{fx:>16.10f}{er:>16}")
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{er:>20}")
         else:
-            print(f"{'     '}{i:<6}{x:>16.10f}{fx:>16.10f}{er:>16.10f}")
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{er:>20.9e}")
 if raiz is not None:
-    print(f"{'     '}Raiz z3 = {raiz:>16.10f}")
+    print(f"{'     '}Raiz z3 = {raiz:>20.9e}")
 input()
