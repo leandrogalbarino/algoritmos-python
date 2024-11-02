@@ -2,24 +2,32 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+
 def f_string():
-    return "x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827"
+    # return "x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827"
+    return "3880.73 + 4044.8*x + 1614.77*x**2 + 308.576*x**3 + 28.3001*x **4 + x**5"
 
 
 def f(x):
-    return x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827
-    
+    # return x**5 - 12.0953*x**4 + 33.6161*x**3 + 55.4476*x**2 - 260.915*x + 119.827
+    return 3880.73 + 4044.8*x + 1614.77*x**2 + 308.576*x**3 + 28.3001*x ** 4 + x**5
+
+
 def f_linha(x):
-    return 5*x**4 - 4*12.0953*x**3 + 3*33.6161*x**2 + 2*55.4476*x - 260.915
-    
-    
+    #return 5*x**4 - 4*12.0953*x**3 + 3*33.6161*x**2 + 2*55.4476*x - 260.915
+    return 4044.8 + 2*1614.77*x + 3*308.576*x**2 + 4*28.3001*x**3 + 5*x**4
+
+  # return "3880.73 + 4044.8*x + 1614.77*x**2 + 308.576*x**3 + 28.3001*x **4 + x**5"
+# return 3880.73 + 4044.8*x + 1614.77*x**2 + 308.576*x**3 + 28.3001*x **4 + x**5
+# return 4044.8 + 2*1614.77*x + 3*308.576*x**2 + 4*28.3001*x**3 + 5*x**4
+
 
 def e():
     return 0.000001
 
-
 def tolerancia(x, x_anterior):
     return abs((x - x_anterior) / x)
+
 
 def pedir_numero_float(mensagem):
     while True:
@@ -32,24 +40,24 @@ def pedir_numero_float(mensagem):
 
 def metodo_de_newton():
     x_anterior = pedir_numero_float("Chute inicial:")
-    
+
     interacoes = []  # Lista para armazenar as interações
-    interacoes.append((x_anterior, f(x_anterior), f_linha(x_anterior), "--------"))
+    interacoes.append((x_anterior, f(x_anterior),
+                      f_linha(x_anterior), "--------"))
 
     while True:
         if f_linha(x_anterior) == 0:
             print("Derivada igual a zero, metodo nao pode continuar.")
             return None, []
 
-        x = x_anterior - f(x_anterior)/ f_linha(x_anterior)
+        x = x_anterior - f(x_anterior) / f_linha(x_anterior)
         erro = tolerancia(x, x_anterior)  # Calcula a tolerância
         interacoes.append((x, f(x), f_linha(x), erro))
 
         if erro < e():
             return x, interacoes
-        
-        
-        if(len(interacoes) > 100):
+
+        if (len(interacoes) > 100):
             print("Metodo de Newton nao convergiu.")
             return None, []
 
@@ -84,12 +92,15 @@ if len(interacoes) > 0:
     # Exibir tabela de interações
     print("\tMÉTODO DE NEWTON | DETERMINAÇÃO DA RAIZ z2")
     # Cabeçalho da tabela
-    print(f"{'     '}{'k':<6}{'xk':>20}{'f(xk)':>20}{'f\'(xk)':>20}{'ERk':>20}")
+    print(f"{'     '}{'k':<6}{'xk':>20}{
+          'f(xk)':>20}{'f\'(xk)':>20}{'ERk':>20}")
     for i, (x, fx, f_linha, er) in enumerate(interacoes):
         if isinstance(er, str):
-            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{er:>20}")  # Exibe a string sem formatação
-        else:    
-            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{er:>20.9e}")
+            print(f"{'     '}{i:<6}{x:>20.9e}{fx:>20.9e}{f_linha:>20.9e}{
+                  er:>20}")  # Exibe a string sem formatação
+        else:
+            print(f"{'     '}{i:<6}{x:>20.9e}{
+                  fx:>20.9e}{f_linha:>20.9e}{er:>20.9e}")
 # Exibir o valor final da raiz
 if raiz is not None:
     print(f"{'     '}Raiz z2 = {raiz:>20.9e}")
